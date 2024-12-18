@@ -1,0 +1,57 @@
+# Main NGINX Configuration File
+
+user nginx;  # Define the user for NGINX worker processes
+worker_processes auto;  # Auto-set based on available CPU cores
+
+# Error log configuration
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+# Worker connections setting
+events {
+    worker_connections 1024;
+}
+
+http {
+    # MIME types configuration
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    # Log files configuration
+    access_log /var/log/nginx/access.log;
+
+    # Gzip compression settings
+    gzip on;
+    gzip_disable "msie6";
+
+    # Root directory for the server (adjust path for your local test files)
+    root /var/www/html;
+
+    # Include additional configuration files
+    include /etc/nginx/conf.d/*.conf;
+
+    # Basic server configuration for localhost
+    server {
+        listen 80;  # Listen on port 80 for HTTP requests
+        server_name localhost;  # Set server name to localhost
+
+        # Root directory for serving files
+        root /var/www/html;  # Path to the directory containing test content
+
+        # Default index file to serve
+        index index.php index.html index.htm;
+
+        # Location block for PHP files
+        location ~ \.php$ {
+            include fastcgi_params;  # Include FastCGI parameters
+            fastcgi_pass 127.0.0.1:9000;  # The address of the PHP-FPM socket
+            fastcgi_index index.php;  # The index file to execute for PHP
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;  # Pass script filename to PHP-FPM
+        }
+
+        # Default location block for handling requests
+        location / {
+            try_files $uri $uri/ =404;  # Serve files or return 404 if not found
+        }
+    }
+}
