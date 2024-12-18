@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f5f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+}
+
+.navigation {
+    width: 250px;
+    background-color: #1e1e2f;
+    color: #fff;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    
+}
+
+.navigation ul li {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navigation ul li a .icon {
+    margin-right: 15px;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.topbar .toggle {
+    font-size: 24px;
+}
+
+.topbar .search {
+    position: relative;
+}
+
+.topbar .search input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.topbar .search ion-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.details .recentOrders {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.details .recentOrders table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details .recentOrders table th,
+.details .recentOrders table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.details .recentOrders table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.details .recentOrders table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Dashboard Cards */
+.dashboard {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    padding-left: 100px;
+}
+
